@@ -1,5 +1,28 @@
 <html>
-    <body>
-        <p>Welcome to this page</p>
-    </body>
+
+<body>
+    <script src="GazeCloudAPI.js"></script>
+    <script src="test.html"></script>
+    <p onclick="start()">Welcome to this page</p>
+    <div id="gaze"
+        style="position: absolute;width: 80px;height: 80px;border: solid 5px  rgba(58, 139, 194, 0.699);	box-shadow: 0 0 100px 3px rgba(0, 0, 0, 0.5);background-color: ;	pointer-events: none;	z-index: 999999">
+    </div>
+</body>
+
+<script>
+    function start() {
+        alert('hello')
+        GazeCloudAPI.StartEyeTracking()
+        GazeCloudAPI.StopEyeTracking()
+        GazeCloudAPI.OnResult()
+
+
+        if (GazeData.state != 0) {
+            if (gaze.style.display == "block") gaze.style.display = "none";
+        } else {
+            if (gaze.style.display == "none") gaze.style.display = "block";
+        }
+    }
+</script>
+
 </html>

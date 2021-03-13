@@ -1,223 +1,107 @@
-
 <html>
-    <center>
-    <body>
-        <script src="https://api.gazerecorder.com/GazeCloudAPI.js" ></script>
 
-        <div>
-            <div class="rectangle-1" id="rect">Hover Me </div>
-            <div class="rectangle-2" id="gaze">Drag Me</div>
-          </div>
+<head>
+  <center>
+    <script src="./GazeCloudAPI.js"></script>
 
-          <div >
-            <div class="box">
-                <button class="but" type="button" onclick="start()">Start</button>
-                <button class="but" type="button" onclick="end()">End</button>
-             
-                <p class="a">State: <span id="state"></span></p>
-                <p class="a">Cord X: <span id="docX"></span></p>
-                <p class="a">Cord Y: <span id="docY"></span></p>
-                <p class="a">Timestamp: <span id="time"></span></p>
-              </div>
-            </div>
-           
-            <div id="rect">
-            <a href="/keyboard.html"><button class="b"> Next Page </button></a>
-        </div>
-        </div>
-        </div>
-        <script>
-            function start() {
-                GazeCloudAPI.StartEyeTracking();
-                GazeCloudAPI.OnResult = function(GazeData) {
-                console.log("GazeData", GazeData);
-                  // localStorage.setItem("GazeData", GazeData);
-                document.getElementById("state").innerHTML = GazeData.state;
-                document.getElementById("docX").innerHTML = GazeData.docX;
-                document.getElementById("docY").innerHTML = GazeData.docY;
-                  document.getElementById("time").innerHTML = GazeData.time;
-                  var x = GazeData.docX;
-                  var y = GazeData.docY;
-            
-                  var gaze = document.getElementById("gaze");
-                  x -= gaze.clientWidth / 2;
-                  y -= gaze.clientHeight / 2;
-            
-                  gaze.style.left = x + "px";
-                  gaze.style.top = y + "px";
-            
-                  if (GazeData.state != 0) {
-                    if (gaze.style.display == "block") gaze.style.display = "none";
-                  } else {
-                    if (gaze.style.display == "none") gaze.style.display = "block";
-                  }
-                };
-              }
-            
-              function end() {
-                  GazeCloudAPI.StopEyeTracking();
-                }
-            
-              function commit() {
-                  this.$store.commit("EDIT_STATE", GazeData);
-                }
-            
-                  </script>
-            
-            <script>
-              function isCollapsed(dragMe, rect){
-                  dragMe = document.getElementById('gaze')
-                  rect = document.getElementById('rect')
-              var object_1 = dragMe.getBoundingClientRect();
-              var object_2 = rect.getBoundingClientRect();
-              
-              if (object_1.left < object_2.left + object_2.width  && object_1.left + object_1.width  > object_2.left &&
-                    object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
-                        rect.classList.add("collide");
-              }
-              else{
-                rect.classList.remove("collide");
-              }
-            }
-            </script>     
-        
-        <script>
-            var gaze;
-        window.onload=function(){
-          var rect = document.getElementById("rect");
-          gaze = document.getElementById("gaze");
-          
-          initDrag({
-            element: gaze,
-            start: function(){addShadow();},
-            drag: function(){isCollapsed(gaze, rect);},
-            stop: function(){removeShadow();}
-          });
-        }
-        
-        function isCollapsed(gaze, rect){
-          var object_1 = gaze.getBoundingClientRect();
-          var object_2 = rect.getBoundingClientRect();
-          
-          if (object_1.left < object_2.left + object_2.width  && object_1.left + object_1.width  > object_2.left &&
-                object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
-            rect.classList.add("collide");
-          }
-          else{
-            rect.classList.remove("collide");
-          }
-        }
-        
-        
-        function addShadow(){
-          gaze.classList.add("onDrag");
-        }
-        
-        function removeShadow(){
-          gaze.classList.remove("onDrag");
-        }
-        
-        function initDrag(options){
-          var element = options.element;
-          var mousedown, mouseup, mousemove,
-              dragStart, initX, initY,
-              offsetLeft, offsetTop;
-          
-          function mouseMove(ev){
-            if(dragStart){
-              var newX = offsetLeft + (ev.pageX - initX);
-              var newY = offsetTop + (ev.pageY - initY);
-        
-              element.style.top = newY+"px";
-              element.style.left = newX+"px";
-              
-              options.drag.call();
-            }
-          }
-          
-          function mouseUp(ev){
-            dragStart = false;
-            document.removeEventListener("mousemove", mouseMove, false);
-            document.removeEventListener("mouseup", mouseUp, false);
-            
-            options.stop.call();
-          }
-          
-          function mouseDown(ev){
-            initX = ev.pageX;
-            initY = ev.pageY;
-            dragStart = true;
-            offsetLeft = element.offsetLeft;
-            offsetTop = element.offsetTop;
-            document.addEventListener("mousemove", function(ev){mouseMove(ev)}, false);
-            document.addEventListener("mouseup", function(ev){mouseUp(ev)}, false);
-            
-            options.start.call();
-          }
-          
-          element.addEventListener("mousedown", function(ev){mouseDown(ev)}, false);
-        }
-        </script>
-    </body>
-</html>  
+    <h1>test 1</h1>
+  </center>
+</head>
 
+<body>
+  <div>
+    <div class="box">
+      <center>
+        <button class="but" type="button" onclick="start()">Start</button>
+        <button class="but" type="button" onclick="end()">End</button>
+      </center>
+      <div style=" margin: auto; border:3px solid black;">
+        <p class="a">State: <span id="state"></span></p>
+        <p class="a">Cord X: <span id="docX"></span></p>
+        <p class="a">Cord Y: <span id="docY"></span></p>
+        <p class="a">Timestamp: <span id="time"></span></p>
+      </div>
+    </div>
+  </div>
+  <button onclick="isCollide()">Click here</button>
+  <div id="gaze"
+    style="position: absolute;width: 80px;height: 80px;border: solid 5px  rgba(58, 139, 194, 0.699);	box-shadow: 0 0 100px 3px rgba(0, 0, 0, 0.5);	z-index: 999999">
+  </div>
+  <div id="rect" class="rect">
+    <a href="/keyboard.html"><button class="b"> Next Page </button></a>
+  </div>
+  </div>
+  </div>
+</body>
 
-  
+</html>
 
-  <style>
-      container{position: relative;}
-.rectangle-1{position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: #4CAF50; width: 180px; height: 150px; border-radius: 5px; transition: 0.3s all ease; color: #fff; text-align: center; line-height: 150px; font-size: 25px;}
-.rectangle-1.collide{background: #EF5350;}
-.rectangle-1:after{content:":-)"; position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%);}
-.rectangle-1.collide:after{content:":-("; }
-.rectangle-2{
-    position: absolute; background: #F5B041; width: 100px; height: 100px; border-radius: 5px; z-index: 10; cursor: move; transition: 0.5s box-shadow ease, 0.5s transform ease; transform: translate(0, 0); top: 40%; left: 30%; text-align: center; line-height: 100px; font-size: 17px;}
-.rectangle-2.onDrag{box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.2); transform: translate(-3px, -3px);}
+<script>
+  var dragMe;
+  window.onload = function () {
+    var rect = document.getElementById("rect");
+    dragMe = document.getElementById("dragMe");
 
-.a{
-        color: black;
-    }
-    .but{
-        background-color: #581845;
-        color: white;
-        font-size: 20px;
-        padding: 15px;
-        padding-inline: 30px;
-        pointer-events: painted;
-        transition-duration: 0.4s;
-        cursor: pointer;
+    var object_1 = dragMe.getBoundingClientRect();
+    var object_2 = rect.getBoundingClientRect();
+
+    if (object_1.left < object_2.left + object_2.width && object_1.left + object_1.width > object_2.left &&
+      object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
+      document.getElementById('rect').style.backgroundColor = "red";
+      document.getElementById('but').click()
 
     }
-    .but:hover{
-        background-color: #900c3f;
+    else {
+      document.getElementById('rect').style.backgroundColor = "green";
     }
+  }
 
-    .box{
-        background-color: rgb(150, 178, 230);
-        padding: 30px;
-        margin-left: 10%;
-        margin-right: 10%;
+</script>
+
+<script src="GazeCloudAPI.js"></script>
+
+<script>
+  function start() {
+    GazeCloudAPI.StartEyeTracking()
+    GazeCloudAPI.StopEyeTracking()
+    GazeCloudAPI.OnResult = function (GazeData) {
+      console.log("GazeData", GazeData);
+      localStorage.setItem("GazeData", GazeData);
+      document.getElementById("state").innerHTML = GazeData.state;
+      document.getElementById("docX").innerHTML = GazeData.docX;
+      document.getElementById("docY").innerHTML = GazeData.docY;
+      document.getElementById("time").innerHTML = GazeData.time;
+      var x = GazeData.docX;
+      var y = GazeData.docY;
+
+      var gaze = document.getElementById("gaze");
+      x -= gaze.clientWidth / 2;
+      y -= gaze.clientHeight / 2;
+
+      gaze.style.left = x + "px";
+      gaze.style.top = y + "px";
+
+      if (GazeData.state != 0) {
+        if (gaze.style.display == "block") gaze.style.display = "none";
+      } else {
+        if (gaze.style.display == "none") gaze.style.display = "block";
+      }
+
     }
-    .b {
-      background-color: #581845;
-      cursor: pointer;
-      border: none;
-      color: white;
-      text-align: center;
-      padding: 30px 50px;
-      font-size: 20px;
-      margin: 4px 2px;
-      transition-duration: 0.4s;
-      width: 50%;
-      height: 30%;
-      margin-top: 50px;
+    function end() {
+      GazeCloudAPI.StopEyeTracking();
     }
-    .b:hover {
-      background-color: #900c3f;
-      color: black;
+    function commit() {
+      this.$store.commit("EDIT_STATE", GazeData);
     }
+  }
+</script>
 
-
-  </style>
-
-    
+<style>
+  .rect {
+    width: 400px;
+    height: 200px;
+    border: 5px solid black;
+    align-content: center;
+  }
+</style>

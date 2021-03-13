@@ -1,0 +1,129 @@
+<html>
+
+<head>
+    <script src="./GazeCloudAPI.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <div onmousemove="isCollapsed()" class="container">
+            <div class="rectangle-1" id="rect">
+                Hover Me <span id="txt"></span></div>
+            <div id="gaze" style="
+        position: absolute;
+        display: none;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color:rgba(19, 8, 119, 0.5);
+        border: solid 5px rgba(85, 0, 241, 0.699);
+        box-shadow: 0 0 100px 5px rgba(2, 2, 2, 0.5);color: rgb(47, 0, 255);
+        pointer-events: none;
+        z-index: 999999;">
+                <p style="text-align: center; margin: auto; padding-top: 37%; font-size: 100px;">+</p>
+            </div>
+        </div>
+
+        <input id="but" type=button onClick="location.href='keyboard.html'" value='click here'>
+
+    </div>
+
+    <div>
+        <div class="box">
+            <button class="but" type="button" onclick="start()">Start</button>
+            <button class="but" type="button" onclick="end()">End</button>
+
+            <p class="a">State: <span id="state"></span></p>
+            <p class="a">Cord X: <span id="docX"></span></p>
+            <p class="a">Cord Y: <span id="docY"></span></p>
+            <p class="a">Timestamp: <span id="time"></span></p>
+        </div>
+    </div>
+
+    <div>
+        <a id="yes" href="/keyboard.html"><button class="b"> Next Page </button></a>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function start() {
+        GazeCloudAPI.StartEyeTracking();
+        GazeCloudAPI.OnResult = function (GazeData) {
+            console.log("GazeData", GazeData);
+            // localStorage.setItem("GazeData", GazeData);
+            document.getElementById("state").innerHTML = GazeData.state;
+            document.getElementById("docX").innerHTML = GazeData.docX;
+            document.getElementById("docY").innerHTML = GazeData.docY;
+            document.getElementById("time").innerHTML = GazeData.time;
+            var x = GazeData.docX;
+            var y = GazeData.docY;
+
+            var gaze = document.getElementById("gaze");
+            x -= gaze.clientWidth / 2;
+            y -= gaze.clientHeight / 2;
+
+            gaze.style.left = x + "px";
+            gaze.style.top = y + "px";
+
+            if (GazeData.state != 0) {
+                if (gaze.style.display == "block") gaze.style.display = "none";
+            } else {
+                if (gaze.style.display == "none") gaze.style.display = "block";
+            }
+
+
+            var rect = document.getElementById("rect");
+            var object_1 = gaze.getBoundingClientRect();
+            var object_2 = rect.getBoundingClientRect();
+
+            if (object_1.left < object_2.left + object_2.width && object_1.left + object_1.width > object_2.left &&
+                object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
+                document.getElementById('rect').style.backgroundColor = "red";
+                setTimeout(function () {
+                    document.getElementById('yes').click()
+                }, 2000);
+
+            }
+            else {
+                document.getElementById('rect').style.backgroundColor = "green";
+
+            }
+        }
+    }
+
+    function end() {
+        GazeCloudAPI.StopEyeTracking();
+    }
+
+    function commit() {
+        this.$store.commit("EDIT_STATE", GazeData);
+    }
+</script>
+
+
+
+
+<style>
+    container {
+        position: relative;
+    }
+
+    .rectangle-1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #4CAF50;
+        width: 180px;
+        height: 150px;
+        border-radius: 5px;
+        transition: 0.3s all ease;
+        color: #fff;
+        text-align: center;
+        line-height: 150px;
+        font-size: 25px;
+    }
+</style>

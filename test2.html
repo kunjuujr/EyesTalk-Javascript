@@ -1,0 +1,122 @@
+<html>
+
+<body>
+    <div>
+        <div onmousemove="isCollapsed()" class="container">
+            <div class="rectangle-1" id="rect">
+                Hover Me <span id="txt"></span></div>
+            <div class="rectangle-2" id="dragMe">Drag Me</div>
+        </div>
+
+        <input id="but" type=button onClick="location.href='keyboard.html'" value='click here'>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    var dragMe;
+    window.onload = function () {
+
+        document.addEventListener('mousemove', function (e) {
+
+            var c = 0;
+            var t;
+            var timer_is_on = 0;
+
+            let circle = document.getElementById('dragMe');
+            let left = e.clientX;
+            let top = e.clientY;
+            circle.style.left = left + 'px';
+            circle.style.top = top + 'px';
+
+
+            var rect = document.getElementById("rect");
+            dragMe = document.getElementById("dragMe");
+
+            var object_1 = dragMe.getBoundingClientRect();
+            var object_2 = rect.getBoundingClientRect();
+
+            /*
+            function timedCount() {
+                document.getElementById("txt").innerHTML = c;
+                c = c + 1;
+                t = setTimeout(timedCount, 1000);
+            }
+
+            function startCount() {
+                if (!timer_is_on) {
+                    timer_is_on = 1;
+                    timedCount();
+                }
+            }
+
+            function stopCount() {
+                clearTimeout(t);
+                timer_is_on = 0;
+            } */
+
+            if (object_1.left < object_2.left + object_2.width && object_1.left + object_1.width > object_2.left &&
+                object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
+                document.getElementById('rect').style.backgroundColor = "red";
+                //  document.getElementById('but').click()
+                /*   c = 0;
+                   t = 0;
+                   timer_is_on = 0;
+                   startCount()*/
+
+            }
+            else {
+                document.getElementById('rect').style.backgroundColor = "green";
+                /*     t = 0;
+                     timer_is_on = 0;
+                     clearTimeout()
+                     stopCount()*/
+            }
+        });
+
+    }
+
+</script>
+
+
+<style>
+    container {
+        position: relative;
+    }
+
+    .rectangle-1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #4CAF50;
+        width: 180px;
+        height: 150px;
+        border-radius: 5px;
+        transition: 0.3s all ease;
+        color: #fff;
+        text-align: center;
+        line-height: 150px;
+        font-size: 25px;
+    }
+
+    .rectangle-2 {
+        position: absolute;
+        background: #F5B041;
+        width: 100px;
+        height: 100px;
+        border-radius: 5px;
+        z-index: 10;
+        cursor: move;
+        transition: 0.5s box-shadow ease, 0.5s transform ease;
+        transform: translate(0, 0);
+        top: 40%;
+        left: 30%;
+        text-align: center;
+        line-height: 100px;
+        font-size: 17px;
+    }
+</style>
