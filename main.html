@@ -1,108 +1,117 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8" />
-		<title>Main Pag</title>
-		<link rel="stylesheet" href="style.css" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	</head>
-	<body>
-		<div>
-			<div class="header">
-				<h1>Main Option</h1>
-				<h2>free to talk free to text</h2>
-				<p>Down left and right are some description</p>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Main Pag</title>
+	<link rel="stylesheet" href="style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<div>
+		<div class="header">
+			<h1>Main Option</h1>
+			<h2>Select any one to continue</h2>
+			<h2>Left and Right are some description</h2>
+		</div>
+
+		<div class="row">
+			<div class="column">
+				<h1>Messaging</h1>
+				<p style="font-size: 30px;">
+					Messaging will take you to the chat window where you can select between the contacts and latest
+					messages
+				</p>
 			</div>
 
-			<div class="row">
-				<div class="column">
-					<h2>Messaging</h2>
-					<p>
-						The web app starts with a sign up screen followed by a login page. When the user is logged in
-						then they can select into messaging and use this feature. First a screen will display 2 options
-						of selecting contacts or messaging screen. Contacts will allow the user to search a user and
-						send and message him directly. Message screen will display all the latest messages received by
-						the user. There will be an option to send a voice message. The chat window will display all the
-						previous messages with timestamps. All messages are stored in the server.
-					</p>
-				</div>
-
-				<div class="column">
-					<div class="wrapper1">
-						<div class="form-inn">
-							<form action="#" class="msg">
-								<div class="field">
-									<input type="submit" value="Message " />
-								</div>
-							</form>
-							<form action="keyboard.html" class="txt">
-								<div class="field">
-									<input type="submit" value="Text" />
-								</div>
-							</form>
-						</div>
+			<div class="column">
+				<div class="wrapper1">
+					<div class="form-inn">
+						<form action="#" class="msg">
+							<div class="field">
+								<input type="submit" value="Message " />
+							</div>
+						</form>
+						<form action="keyboard.html" class="txt">
+							<div class="field">
+								<input type="submit" value="Gazeboard" />
+							</div>
+						</form>
 					</div>
 				</div>
+			</div>
 
-				<div class="column">
-					<h2>Texting</h2>
-					<p>
-						The website starts with an eye tracking calibration screen. Then they proceed with eye tracking
-						functions and can start controlling the app functions using their eyes. The UI design will make
-						the app easily navigable by eyes. In places where typing is required, it always uses the
-						LookKeyBoard feature. This let’s users complete words at a time or type letter-by-letter.
-					</p>
-				</div>
+			<div class="column">
+				<h1 float='right'>Gazeboard</h1>
+				<p style="font-size: 30px">
+					Here is a keyboard for for typing with your eyes. All you have to do is look at the character and it
+					will get selected.
+				</p>
 			</div>
 		</div>
-	</body>
-	<style>
-		* {
-			box-sizing: border-box;
-		}
+	</div>
+</body>
+<style>
+	* {
+		box-sizing: border-box;
+	}
 
-		body {
-			margin: 0;
-		}
-		.header {
-			background: -webkit-linear-gradient(left, #a445b2, #fa4299);
-			padding: 25px;
-			text-align: center;
-			color: #fff;
-		}
+
+	body {
+		margin: 0;
+	}
+
+	.header {
+		background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+		padding: 25px;
+		text-align: center;
+		color: #fff;
+	}
+
+	.column {
+		float: left;
+		width: 33%;
+		padding: 40px;
+	}
+
+	@media screen and (max-width: 600px) {
 		.column {
-			float: left;
-			width: 33%;
-			padding: 40px;
+			width: 100%;
 		}
-		@media screen and (max-width: 600px) {
-			.column {
-				width: 100%;
-			}
-		}
-		.column form .field {
-			padding: 10px;
-			margin: 10px;
-		}
-		.form-inn form .field input {
-			height: 170px;
-			width: 300px;
-			outline: none;
-			font-size: 60px;
-			border-radius: 8px;
-			border: 1px solid lightgrey;
-			border-bottom-width: 2px;
-			transition: all 0.4s ease;
-		}
-		.wrapper1 {
-			overflow: hidden;
-			max-width: 4000px;
-			max-height: 2000px;
-			background: #fff;
-			padding: 0.5px 0.5px;
-			border-radius: 5px;
-			margin-top: 20px;
-			box-shadow: 0px 15px 20px rgb(0, 0, 0, 0.1);
-		}
-	</style>
+	}
+
+	.column form .field {
+		padding: 10px;
+		margin: 10px;
+	}
+
+	.form-inn form .field input {
+		height: 170px;
+		width: 380px;
+		outline: none;
+		font-size: 60px;
+		border-radius: 8px;
+		border: 1px solid lightgrey;
+		border-bottom-width: 2px;
+		transition: all 0.4s ease;
+	}
+
+	.form-inn form .field input.hover {
+		background-color: pink;
+		color: black;
+	}
+
+	.wrapper1 {
+		overflow: hidden;
+		max-width: 4000px;
+		max-height: 2000px;
+		background: #fff;
+		padding: 0.5px 0.5px;
+		border-radius: 5px;
+		margin-top: 20px;
+		box-shadow: 0px 15px 20px rgb(0, 0, 0, 0.1);
+	}
+</style>
+
 </html>

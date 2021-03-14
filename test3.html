@@ -11,7 +11,6 @@
             <div class="rectangle-1" id="rect">
                 Hover Me <span id="txt"></span></div>
             <div id="gaze" style="
-            display: none;
         position: absolute;
         width: 100px;
         height: 100px;
@@ -25,7 +24,7 @@
                 <p style="text-align: center; 
                 margin: auto; 
                 padding-top: 37%; 
-                font-size: 100px;">+</p>
+                font-size: 100px;"><span id="txt"></span>+</p>
 
             </div>
         </div>
@@ -77,6 +76,8 @@
         }
 
         GazeCloudAPI.StartEyeTracking();
+
+        GazeCloudAPI.StopEyeTracking();
         GazeCloudAPI.OnResult = function (GazeData) {
             console.log("GazeData", GazeData);
             // localStorage.setItem("GazeData", GazeData);
