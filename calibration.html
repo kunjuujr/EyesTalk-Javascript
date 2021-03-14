@@ -2,7 +2,8 @@
 <html >
 <center>
     <head >
-        <h1>GazeCloud API</h1>
+        <h1>Eyes Talk</h1>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
         <h2>Collission Selection</h2>
@@ -26,7 +27,7 @@
               style="position: absolute;display:none;width: 100px;height: 100px;border-radius: 50%;border: solid 2px  rgba(58, 139, 194, 0.699);	box-shadow: 0 0 100px 3px rgba(125, 125,125, .5);	pointer-events: none;	z-index: 999999"
             ></div>
             <div id="rect">
-            <a href="/keyboard.html"><button class="b"> Next Page </button></a>
+            <a href="main.html"><button class="b"> Next Page </button></a>
         </div>
         </div>
         </div>
@@ -94,7 +95,7 @@ function start() {
         color: black;
     }
     .but{
-        background-color: #581845;
+        background: -webkit-linear-gradient(left, #a445b2, #fa4299);
         color: white;
         font-size: 20px;
         padding: 15px;
@@ -102,10 +103,13 @@ function start() {
         pointer-events: painted;
         transition-duration: 0.4s;
         cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid lightgrey;
 
     }
     .but:hover{
         background-color: #900c3f;
+        color: black;
     }
 
     .box{
@@ -113,11 +117,11 @@ function start() {
         padding: 30px;
         margin-left: 10%;
         margin-right: 10%;
+        border-radius: 10px;
     }
     .b {
-      background-color: #581845;
+      background: -webkit-linear-gradient(left, #a445b2, #fa4299);
       cursor: pointer;
-      border: none;
       color: white;
       text-align: center;
       padding: 30px 50px;
@@ -127,6 +131,8 @@ function start() {
       width: 50%;
       height: 50%;
       margin-top: 50px;
+     border-radius: 5px;
+     border: 1px solid lightgrey;
     }
     .b:hover {
       background-color: #900c3f;

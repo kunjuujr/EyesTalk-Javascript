@@ -1,5 +1,38 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        <p>Welcome to this page</p>
-    </body>
+	<head>
+		<title>Keyboard</title>
+		<meta name="viewport" content="width=device-width ,initial-scale=0.1" />
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="keyboard.css" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	</head>
+	<body>
+		<div>
+			<h1 style="text-align: center">Feel free to text</h1>
+			<div>
+				<center>
+					<textarea style="top: 130px; width: 1000px; height: 150px; border: 3px solid #73ad73"></textarea>
+				</center>
+			</div>
+			<div class="keyboard">
+				<div class="keyboard--keys">
+					<button type="button" class="keyboard--key">a</button>
+					<button type="button" class="keyboard--key keyboard--key--wide">
+						<i class="material-icons">backspace</i>
+					</button>
+					<button type="button" class="keyboard--key keyboard--key--extra-wide">
+						<i class="material-icons">space_bar</i>
+					</button>
+					<button type="button" class="keyboard--key keyboard--key--wide keyboard--key--activatable">
+						<i class="material-icons">keyboard_capslock</i>
+					</button>
+					<button type="button" class="keyboard--key keyboard--key--wide keyboard--key--dark">
+						<i class="material-icons">check_circle</i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<script src="keyboard.js"></script>
+	</body>
 </html>
