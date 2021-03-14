@@ -1,28 +1,38 @@
+<!DOCTYPE html>
 <html>
-
-<body>
-    <script src="GazeCloudAPI.js"></script>
-    <script src="test.html"></script>
-    <p onclick="start()">Welcome to this page</p>
-    <div id="gaze"
-        style="position: absolute;width: 80px;height: 80px;border: solid 5px  rgba(58, 139, 194, 0.699);	box-shadow: 0 0 100px 3px rgba(0, 0, 0, 0.5);background-color: ;	pointer-events: none;	z-index: 999999">
-    </div>
-</body>
-
-<script>
-    function start() {
-        alert('hello')
-        GazeCloudAPI.StartEyeTracking()
-        GazeCloudAPI.StopEyeTracking()
-        GazeCloudAPI.OnResult()
-
-
-        if (GazeData.state != 0) {
-            if (gaze.style.display == "block") gaze.style.display = "none";
-        } else {
-            if (gaze.style.display == "none") gaze.style.display = "block";
-        }
-    }
-</script>
-
+	<head>
+		<title>Keyboard</title>
+		<meta name="viewport" content="width=device-width ,initial-scale=0.1" />
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="keyboard.css" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	</head>
+	<body>
+		<div>
+			<h1 style="text-align: center">Feel free to text</h1>
+			<div>
+				<center>
+					<textarea style="top: 130px; width: 1000px; height: 150px; border: 3px solid #73ad73"></textarea>
+				</center>
+			</div>
+			<!--	<div class="keyboard">
+				<div class="keyboard--keys">
+					<button type="button" class="keyboard--key">a</button>
+					<button type="button" class="keyboard--key keyboard--key--wide">
+						<i class="material-icons">backspace</i>
+					</button>
+					<button type="button" class="keyboard--key keyboard--key--extra-wide">
+						<i class="material-icons">space_bar</i>
+					</button>
+					<button type="button" class="keyboard--key keyboard--key--wide keyboard--key--activatable">
+						<i class="material-icons">keyboard_capslock</i>
+					</button>
+					<button type="button" class="keyboard--key keyboard--key--wide keyboard--key--dark">
+						<i class="material-icons">check_circle</i>
+					</button>
+				</div>
+			</div>-->
+		</div>
+		<script src="keyboard.js"></script>
+	</body>
 </html>
