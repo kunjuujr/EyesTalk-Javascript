@@ -1,49 +1,50 @@
 <!DOCTYPE html>
-<html >
+<html>
 <center>
-    <head >
-        <h1>Eyes Talk</h1>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </head>
-    <body>
-        <h2>Collission Selection</h2>
-        <div>
-            <script src="https://api.gazerecorder.com/GazeCloudAPI.js" ></script>
-        </div>
 
-        <div >
-            <div class="box">
-                <button class="but" type="button" onclick="start()">Start</button>
-                <button class="but" type="button" onclick="end()">End</button>
-             
-                <p class="a">State: <span id="state"></span></p>
-                <p class="a">Cord X: <span id="docX"></span></p>
-                <p class="a">Cord Y: <span id="docY"></span></p>
-                <p class="a">Timestamp: <span id="time"></span></p>
-              </div>
-            </div>
-            <div
-              id="gaze"
-              style="position: absolute;display:none;width: 100px;height: 100px;border-radius: 50%;border: solid 2px  rgba(58, 139, 194, 0.699);	box-shadow: 0 0 100px 3px rgba(125, 125,125, .5);	pointer-events: none;	z-index: 999999"
-            ></div>
-            <div id="rect">
-            <a href="main.html"><button class="b"> Next Page </button></a>
-        </div>
-        </div>
-        </div>
+  <head>
+    <h1>Eyes Talk</h1>
+  </head>
 
-    </body>
+  <body>
+    <h2>Collission Selection</h2>
+    <div>
+      <script src="GazeCloudAPI.js"></script>
+    </div>
+
+    <div>
+      <div class="box">
+        <button class="but" type="button" onclick="start()">Start</button>
+        <button class="but" type="button" onclick="end()">End</button>
+
+        <p class="a">State: <span id="state"></span></p>
+        <p class="a">Cord X: <span id="docX"></span></p>
+        <p class="a">Cord Y: <span id="docY"></span></p>
+        <p class="a">Timestamp: <span id="time"></span></p>
+      </div>
+    </div>
+    <div id="gaze"
+      style="position: absolute;display:none;width: 100px;height: 100px;border-radius: 50%;border: solid 2px  rgba(58, 139, 194, 0.699);	box-shadow: 0 0 100px 3px rgba(125, 125,125, .5);	pointer-events: none;	z-index: 999999">
+    </div>
+    <div id="rect">
+      <a href="/keyboard.html"><button class="b"> Next Page </button></a>
+    </div>
+    </div>
+    </div>
+
+  </body>
+
 </html>
 
 <script>
-function start() {
+  function start() {
     GazeCloudAPI.StartEyeTracking();
-    GazeCloudAPI.OnResult = function(GazeData) {
-    console.log("GazeData", GazeData);
+    GazeCloudAPI.OnResult = function (GazeData) {
+      console.log("GazeData", GazeData);
       // localStorage.setItem("GazeData", GazeData);
-    document.getElementById("state").innerHTML = GazeData.state;
-    document.getElementById("docX").innerHTML = GazeData.docX;
-    document.getElementById("docY").innerHTML = GazeData.docY;
+      document.getElementById("state").innerHTML = GazeData.state;
+      document.getElementById("docX").innerHTML = GazeData.docX;
+      document.getElementById("docY").innerHTML = GazeData.docY;
       document.getElementById("time").innerHTML = GazeData.time;
       var x = GazeData.docX;
       var y = GazeData.docY;
@@ -64,31 +65,14 @@ function start() {
   }
 
   function end() {
-      GazeCloudAPI.StopEyeTracking();
-    }
+    GazeCloudAPI.StopEyeTracking();
+  }
 
   function commit() {
-      this.$store.commit("EDIT_STATE", GazeData);
-    }
-
-      </script>
-
-<script>
-  function isCollapsed(dragMe, rect){
-      dragMe = document.getElementById('gaze')
-      rect = document.getElementById('rect')
-  var object_1 = dragMe.getBoundingClientRect();
-  var object_2 = rect.getBoundingClientRect();
-  
-  if (object_1.left < object_2.left + object_2.width  && object_1.left + object_1.width  > object_2.left &&
-		object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
-        document.getElementById("rect").innerHTML = "Hello World";
+    this.$store.commit("EDIT_STATE", GazeData);
   }
-  else{
-    rect.style.color = "white";
-  }
-}
-</script>      
+
+</script>
 
 <style>
     .a{
@@ -138,4 +122,7 @@ function start() {
       background-color: #900c3f;
       color: black;
     }
+
+    
+  
     </style>
