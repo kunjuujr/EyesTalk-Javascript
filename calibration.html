@@ -9,7 +9,7 @@
   <body>
     <h2>Collission Selection</h2>
     <div>
-      <script src="./GazeCloudAPI.js"></script>
+      <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script>
     </div>
 
     <div>
@@ -21,7 +21,10 @@
         <p class="a">Cord X: <span id="docX"></span></p>
         <p class="a">Cord Y: <span id="docY"></span></p>
         <p class="a">Timestamp: <span id="time"></span></p>
+        <div class="b" id="rect" type='button' onClick="location.href='./main.html'">
+          Hover here for 3 sec to go to Next Page</div>
       </div>
+    </div>
     </div>
     <div id="gaze" style="
                       position: absolute;
@@ -43,9 +46,7 @@
       </h1>
 
     </div>
-    <div class="b" id="rect" type='button' onClick="location.href='./keyboard.html'">
-      Hover here for 3 sec to go to Next Page &nbsp <span id="txt"></span> &nbsp</div>
-    </div>
+
     </div>
     </div>
 

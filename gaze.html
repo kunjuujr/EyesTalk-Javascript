@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="gazeCloud.js"></script>
+    <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script>
+
+</head>
+
+<body>
+    <center>
+        <iframe src="calibration.html" width="1200px" height="600px"></iframe>
+
+        <div id="gaze" style="
+						    position: absolute;
+						    width: 100px;
+						    height: 100px;
+						    border-radius: 50%;
+						    background-color:rgba(19, 8, 119, 0.5);
+						    border: solid 5px rgba(85, 0, 241, 0.699);
+						    pointer-events: all;
+						    box-shadow: 0 0 100px 5px rgba(2, 2, 2, 0.5);
+						    z-index: 999999;">
+            <h1 style="text-align: center;
+						    color: white; 
+						    margin: auto; 
+						    padding-top: 37%; 
+						    font-size: 80px;">
+                <div><span id="txt"></span></div>
+            </h1>
+        </div>
+
+        <div class="box">
+            <button class="but" type="button" onclick="start()">Start</button>
+            <button class="but" type="button" onclick="end()">End</button>
+
+            <p class="a">State: <span id="state"></span></p>
+            <p class="a">Cord X: <span id="docX"></span></p>
+            <p class="a">Cord Y: <span id="docY"></span></p>
+            <p class="a">Timestamp: <span id="time"></span></p>
+            <div class="b" id="rect" type='button' onClick="location.href='./main.html'">
+                Hover here for 3 sec to go to Next Page</div>
+        </div>
+</body>
+
+</html>

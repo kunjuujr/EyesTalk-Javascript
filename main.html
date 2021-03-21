@@ -1,25 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
 
 <head>
-	<meta charset="utf-8" />
-	<title>Main Pag</title>
+	<script type="text/javascript" src="gazeCloud.js"></script>
+	<script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script>
+
+
+	<title>Main Page</title>
 	<link rel="stylesheet" href="style.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
+	<div id="gaze" style="
+						    position: absolute;
+						    width: 100px;
+						    height: 100px;
+						    border-radius: 50%;
+						    background-color:rgba(19, 8, 119, 0.5);
+						    border: solid 5px rgba(85, 0, 241, 0.699);
+						    pointer-events: all;
+						    box-shadow: 0 0 100px 5px rgba(2, 2, 2, 0.5);
+						    z-index: 999999;">
+		<h1 style="text-align: center;
+						    color: white; 
+						    margin: auto; 
+						    padding-top: 37%; 
+						    font-size: 80px;">
+			<div><span id="txt"></span></div>
+		</h1>
+	</div>
 	<div>
 		<div class="header">
-			<h1>Main Option</h1>
-			<h2>Select any one to continue</h2>
-			<h2>Left and Right are some description</h2>
+			<h1 onclick="start()">Main Option</h1>
+			<p>Select any one to continue</p>
+			<p>Left and Right are some description</p>
 		</div>
 
 		<div class="row">
 			<div class="column">
 				<h1>Messaging</h1>
-				<p style="font-size: 30px;">
+				<p style="font-size: 20px;">
 					Messaging will take you to the chat window where you can select between the contacts and latest
 					messages
 				</p>
@@ -28,12 +47,12 @@
 			<div class="column">
 				<div class="wrapper1">
 					<div class="form-inn">
-						<form action="#" class="msg">
+						<form id="rect" onclick="location.href='message.html'" class="msg">
 							<div class="field">
 								<input type="submit" value="Message " />
 							</div>
 						</form>
-						<form action="keyboard.html" class="txt">
+						<form onclick="location.href='board.html'" id="rect" class="txt">
 							<div class="field">
 								<input type="submit" value="Gazeboard" />
 							</div>
@@ -44,15 +63,26 @@
 
 			<div class="column">
 				<h1 float='right'>Gazeboard</h1>
-				<p style="font-size: 30px">
+				<p style="font-size: 20px">
 					Here is a keyboard for for typing with your eyes. All you have to do is look at the character and it
 					will get selected.
 				</p>
 			</div>
 		</div>
 	</div>
+	<div>
+		<p class="a">State: <span id="state"></span></p>
+		<p class="a">Cord X: <span id="docX"></span></p>
+		<p class="a">Cord Y: <span id="docY"></span></p>
+		<p class="a">Timestamp: <span id="time"></span></p>
+	</div>
 </body>
+
 <style>
+	h1 {
+		color: black;
+	}
+
 	* {
 		box-sizing: border-box;
 	}
