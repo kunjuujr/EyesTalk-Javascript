@@ -31,17 +31,17 @@
 		</h1>
 	</div>
 	<div class="container">
-		<div class="display">
 
-		</div>
+		<input class="display" id="display1" value=" "  >
+
 		<div class="elements">
             
-            <input type="button" value="Alphabets" id="myButton1" onclick="myFunction1()"></input>
-            <input type="button" value="Numbers/Symbols" id="myButton2" onclick="myFunction1()"></input>
-            <input type="button" value="Space" id="myButton3" onclick="myFunction1()"></input>
-            <input type="button" value="Words" id="myButton4" onclick="myFunction1()"></input>
-            <input type="button" value="Emojis" id="myButton5" onclick="myFunction1()"></input>
-            <input type="button" value="Backspace" id="myButton6" onclick="myFunction1()"></input>
+            <input type="button" value="Alphabets" id="myButton1" onclick="myFunction1()" class="input1"></input>
+            <input type="button" value="Numbers/Symbols" id="myButton2" onclick="myFunction1()" class="input1"></input>
+            <input type="button" value="Space" id="myButton3" onclick="myFunction1()" class="input1"></input>
+            <input type="button" value="Words" id="myButton4" onclick="myFunction1()" class="input1"></input>
+            <input type="button" value="Emojis" id="myButton5" onclick="myFunction1()" class="input1"></input>
+            <input type="button" value="Backspace" id="myButton6" onclick="myFunction1()" class="input1"></input>
 			
 		</div>
 
@@ -57,6 +57,11 @@
 </html>
 
 <script>
+	function functionBack()
+				{
+					location.href="bye.html";
+					/*window.location.href = "bye.html";*/
+				}
     function myFunction1(){
         var but=document.getElementById("myButton1").value;
 		/*var n = 6
@@ -87,23 +92,57 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+				myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "E";
+					}
+				myButton4.onclick = function()
+					{
+   							 document.getElementById("display1").value += " ";
+					}
+				myButton6.onclick = function()
+					{
+   							 document.getElementById("display1").value -= " ";
+					}
 
 				document.getElementById("myButton1").addEventListener("click", functionAB)
 				document.getElementById("myButton2").addEventListener("click", functionCD)
 				document.getElementById("myButton3").addEventListener("click", functionE)
 				document.getElementById("myButton4").addEventListener("click", functionSpace1)
 				document.getElementById("myButton5").addEventListener("click", functionBack)
-				document.getElementById("myButton6").addEventListener("click", functionBackspace1)
+				
 					}
 				
 				function functionAB(){
+
+					/*document.getElementById("myButton1").addEventListener("click", functionDisplayAB)*/
+	
 					document.getElementById("myButton1").value="A";
 					document.getElementById("myButton2").value="B";
 					document.getElementById("myButton3").value="E";
 					document.getElementById("myButton4").value="Space";
 					document.getElementById("myButton5").value="Back";
 					document.getElementById("myButton6").value="Backspace";
+
+					myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "A";
 					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "B";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "E";
+					}
+					myButton6.onclick = function()
+					{
+   							 document.getElementById("display1").value -= " ";
+					}
+					
+					}
+					
 				function functionCD(){
 					document.getElementById("myButton1").value="C";
 					document.getElementById("myButton2").value="D";
@@ -111,16 +150,21 @@
 					document.getElementById("myButton4").value="Space";
 					document.getElementById("myButton5").value="Back";
 					document.getElementById("myButton6").value="Backspace";
-					}
-				function functionBack(){
-					document.getElementById("myButton1").value="Alphabets"; 
-                    document.getElementById("myButton2").value="Numbers/Symbols";
-                    document.getElementById("myButton3").value="Space";  
-                    document.getElementById("myButton4").value="Words";
-                    document.getElementById("myButton5").value="Emojis"; 
-                    document.getElementById("myButton6").value="Backspace";
-					}
 
+						myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "C";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "D";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "E";
+					}
+					}
+					
 				/*for button F G H I J*/
 			 function functionFGH(){
 				document.getElementById("myButton1").value="F/G";
@@ -129,12 +173,16 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+				myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "J";
+					}
 
 				document.getElementById("myButton1").addEventListener("click", functionFG)
 				document.getElementById("myButton2").addEventListener("click", functionHI)
 				document.getElementById("myButton3").addEventListener("click", functionJ)
 				document.getElementById("myButton4").addEventListener("click", functionSpace1)
-				document.getElementById("myButton5").addEventListener("click", functionBack1)
+				document.getElementById("myButton5").addEventListener("click", functionBack)
 				document.getElementById("myButton6").addEventListener("click", functionBackspace1)
 					}
 				
@@ -145,6 +193,19 @@
 					document.getElementById("myButton4").value="Space";
 					document.getElementById("myButton5").value="Back";
 					document.getElementById("myButton6").value="Backspace";
+
+						myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "F";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "G";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "J";
+					}
 					}
 				function functionHI(){
 				document.getElementById("myButton1").value="H";
@@ -153,6 +214,18 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+					myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "H";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "I";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "J";
+					}
 					}
 				/*for button K L M N O*/
 				function functionKLM(){
@@ -162,12 +235,16 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+				myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "O";
+					}
 
 				document.getElementById("myButton1").addEventListener("click", functionKL)
 				document.getElementById("myButton2").addEventListener("click", functionMN)
 				document.getElementById("myButton3").addEventListener("click", functionO)
 				document.getElementById("myButton4").addEventListener("click", functionSpace1)
-				document.getElementById("myButton5").addEventListener("click", functionBack1)
+				document.getElementById("myButton5").addEventListener("click", functionBack)
 				document.getElementById("myButton6").addEventListener("click", functionBackspace1)
 					}
 				
@@ -178,6 +255,18 @@
 					document.getElementById("myButton4").value="Space";
 					document.getElementById("myButton5").value="Back";
 					document.getElementById("myButton6").value="Backspace";
+						myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "K";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "L";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "o";
+					}
 					}
 				function functionMN(){
 				document.getElementById("myButton1").value="M";
@@ -186,6 +275,18 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+					myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "M";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "N";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "O";
+					}
 					}
 				/*for button P Q R S T*/
 				function functionPQR(){
@@ -195,6 +296,10 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+				myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "T";
+					}
 
 				document.getElementById("myButton1").addEventListener("click", functionPQ)
 				document.getElementById("myButton2").addEventListener("click", functionRS)
@@ -211,6 +316,18 @@
 					document.getElementById("myButton4").value="Space";
 					document.getElementById("myButton5").value="Back";
 					document.getElementById("myButton6").value="Backspace";
+						myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "P";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "Q";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "T";
+					}
 					}
 				function functionRS(){
 				document.getElementById("myButton1").value="R";
@@ -219,6 +336,18 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+					myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "R";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "S";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "O";
+					}
 					}
 				/*for button U V W X*/
 				function functionUVW(){
@@ -228,12 +357,16 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+				myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "X";
+					}
 
 				document.getElementById("myButton1").addEventListener("click", functionUV)
 				document.getElementById("myButton2").addEventListener("click", functionW)
 				document.getElementById("myButton3").addEventListener("click", functionX)
 				document.getElementById("myButton4").addEventListener("click", functionSpace1)
-				document.getElementById("myButton5").addEventListener("click", functionBack1)
+				document.getElementById("myButton5").addEventListener("click", functionBack)
 				document.getElementById("myButton6").addEventListener("click", functionBackspace1)
 					}
 				
@@ -244,6 +377,18 @@
 					document.getElementById("myButton4").value="Space";
 					document.getElementById("myButton5").value="Back";
 					document.getElementById("myButton6").value="Backspace";
+						myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "U";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "V";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "X";
+					}
 					}
 				function functionW(){
 				document.getElementById("myButton1").value="U";
@@ -252,6 +397,24 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+					myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "U";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "W";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = "X";
+					}
+
+				}
+				function functionBack()
+				{
+					location.replace("bye.html");
+					/*window.location.href = "bye.html";*/
 				}
 				/*for button Y Z */
 				function functionYZ(){
@@ -261,10 +424,27 @@
 				document.getElementById("myButton4").value="Space";
 				document.getElementById("myButton5").value="Back";
 				document.getElementById("myButton6").value="Backspace";
+				myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = " ";
+					}
 
 				document.getElementById("myButton4").addEventListener("click", functionSpace1)
 				document.getElementById("myButton5").addEventListener("click", functionBack1)
 				document.getElementById("myButton6").addEventListener("click", functionBackspace1)
+
+					myButton1.onclick = function()
+					{
+   							 document.getElementById("display1").value = "Y";
+					}
+					myButton2.onclick = function()
+					{
+   							 document.getElementById("display1").value = "Z";
+					}
+					myButton3.onclick = function()
+					{
+   							 document.getElementById("display1").value = " ";
+					}
 				}
 
 
@@ -331,9 +511,10 @@
 		border: solid 2px black;
 		border-radius: 10px;
 		justify-content: center;
-		margin: auto;
+		margin-left: 13%;
 		margin-bottom: 1%;
 		font-size: 50px;
+		
 	}
 
 	.elements {
@@ -346,7 +527,7 @@
 		justify-content: center;
 	}
 
-	input {
+	.input1 {
 		background: -webkit-linear-gradient(left, #a445b2, #fa4299);
 		padding: 10%;
 		height: 100%;
@@ -357,8 +538,5 @@
         transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 	}
 
-	input:hover {
-		background-color: rgb(37, 159, 180);
-		cursor: pointer;
-	}
+	
 </style>
