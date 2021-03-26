@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <title>EyesTalk</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+    <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script>
+</head>
+
+<body>
+    <center>
+        <!-- Gaze Circle-->
+        <div id="gaze"
+            style="position: absolute; display: none; width: 100px; height: 100px; border-radius: 50%; background-color:rgba(19, 8, 119, 0.5); border: solid 5px rgba(85, 0, 241, 0.699); pointer-events: none; box-shadow: 0 0 100px 5px rgba(2, 2, 2, 0.5); z-index: 999999;">
+            <h1 class="circle-txt">
+                <div><span id="txt"></span></div>
+            </h1>
+        </div>
+
+        <!-- Calibration Window-->
+        <div class="calibration" id="calibration">
+            <h1>EyesTalk</h1>
+            <div class="cordinate-container">
+                <button class="but1" type="button" onclick="start()">Start</button>
+                <button class="but1" type="button" onclick="end()">End</button>
+
+                <p>State: <span id="state"></span></p>
+                <p>Cord X: <span id="docX"></span></p>
+                <p>Cord Y: <span id="docY"></span></p>
+                <p>Timestamp: <span id="time"></span></p>
+            </div>
+            <button class="but2" id="rect" onclick="calibToMain()">
+                Hover here for 3 sec to go to Next Page
+            </button>
+
+        </div>
+
+        <!-- Main Page-->
+        <div class="main" id="main">
+            <h1>Main Page</h1>
+            <div class="main-container">
+                <button class="but2" id="board" onclick="mainToKeyboard()">GazeBoard</button>
+                <button class="but2" id="back" onclick="mainToCalib()">Back</button>
+            </div>
+        </div>
+
+        <!-- Keyboard Main -->
+        <div class="keyboard" id="keyboard">
+            <h1>GazeBoard</h1>
+            <div class="display"></div>
+            <div class="keyboard-container">
+                <button class="but3" id="alphabet" onclick="keyboardToAlphabet()">Alphabet</button>
+                <button class="but3" id="words">Words</button>
+                <button class="but3" id="space">Space</button>
+                <button class="but3" id="emoji">Emojis</button>
+                <button class="but3" id="num">Numbers/Symbols</button>
+                <button class="but3" id="backspace" onclick="keyboardToMain()">Backspace</button>
+            </div>
+        </div>
+
+        <!-- Keyboard Main -->
+        <div class="alphabet" id="alphabet">
+            <h1>GazeBoard</h1>
+            <div class="keyboard-container">
+                <button class="but3" id="a1" onclick="keyboardToAlphabet()">a/b/c/d/e</button>
+                <button class="but3" id="board">f/g/h/i/j</button>
+                <button class="but3" id="board">k/l/m/n</button>
+                <button class="but3" id="board">o/p/q/r</button>
+                <button class="but3" id="board">s/t/u/v</button>
+                <button class="but3" id="backspace" onclick="keyboardToMain()">w/x/y/z</button>
+            </div>
+        </div>
+
+</body>
+
+</html>
