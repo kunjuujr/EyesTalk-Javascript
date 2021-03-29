@@ -29,7 +29,7 @@
                 <p>Cord Y: <span id="docY"></span></p>
                 <p>Timestamp: <span id="time"></span></p>
             </div>
-            <button class="but2" id="rect" onclick="calibToMain()">
+            <button class="but4" id="rect" onclick="calibToMain()">
                 Hover here for 3 sec to go to Next Page
             </button>
 
@@ -47,27 +47,18 @@
         <!-- Keyboard Main -->
         <div class="keyboard" id="keyboard">
             <h1>GazeBoard</h1>
-            <div class="display"></div>
             <div class="keyboard-container">
-                <button class="but3" id="alphabet" onclick="keyboardToAlphabet()">Alphabet</button>
-                <button class="but3" id="words">Words</button>
-                <button class="but3" id="space">Space</button>
-                <button class="but3" id="emoji">Emojis</button>
-                <button class="but3" id="num">Numbers/Symbols</button>
-                <button class="but3" id="backspace" onclick="keyboardToMain()">Backspace</button>
-            </div>
-        </div>
 
-        <!-- Keyboard Main -->
-        <div class="alphabet" id="alphabet">
-            <h1>GazeBoard</h1>
-            <div class="keyboard-container">
-                <button class="but3" id="a1" onclick="keyboardToAlphabet()">a/b/c/d/e</button>
-                <button class="but3" id="board">f/g/h/i/j</button>
-                <button class="but3" id="board">k/l/m/n</button>
-                <button class="but3" id="board">o/p/q/r</button>
-                <button class="but3" id="board">s/t/u/v</button>
-                <button class="but3" id="backspace" onclick="keyboardToMain()">w/x/y/z</button>
+                <input type="button" value="Alphabets" id="myButton1" onclick="myFunction1()" class="but3"></input>
+                <input type="button" value="Numbers/Symbols" id="myButton2" onclick="myFunction1()"
+                    class="but3"></input>
+                <input type="button" value="Space" id="myButton3" onclick="myFunction3()" class="but3"></input>
+                <input class="display" id="display1" value="">
+
+                <input type="button" value="Words" id="myButton4" onclick="myFunction1()" class="but3"></input>
+                <input type="button" value="Emojis" id="myButton5" onclick="myFunction1()" class="but3"></input>
+                <input type="button" value="Backspace" id="myButton6" onclick="backspace()" class="but3"></input>
+
             </div>
         </div>
 
