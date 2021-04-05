@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,6 +12,7 @@
     <script src="keyboard.js"></script>
     <script src="firebase.js"></script>
     <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script>
+    
 
 
 </head>
@@ -110,7 +110,7 @@
         </div>
 
         <!-- Keyboard Main -->
-        <div class="keyboard" id="keyboard" style="display: none;">
+        <div class="keyboard" id="keyboard" style="display: block;">
             <input type="button" value="Back" id="boardtomain" onclick="keyboardToMain()" class="but6"></input>
 
             <img src="mainlogo.png" alt="" style="height: 20%; width: 20%; margin-left: 1.5%; margin-top: -10%;">
@@ -121,7 +121,29 @@
                 <input type="button" value="Numbers/Symbols" id="myButton2" onclick="myFunction1()"
                     class="but3"></input>
                 <input type="button" value="Space" id="myButton3" onclick="myFunction3()" class="but3"></input>
-                <input class="display" id="display1" value="">
+
+               
+               
+
+                <input type="text" list="datalist"  onkeyup="ac(this.value)"  id="display1 " class="display"/>
+                    <!-- On keyup calls the function everytime a key is released -->
+                    <datalist id="datalist">
+                        <option value="Delhi"></option>
+                        <option value="Ahemdabad"></option>
+                        <option value="Punjab"></option>
+                        <option value="Uttar Pradesh"></option>
+                        <option value="Himachal Pradesh"></option>
+                        <option value="Karnatka"></option>
+                        <option value="Kerela"></option>
+                        <option value="Maharashtra"></option>
+                        <option value="Gujrat"></option>
+                        <option value="Rajasthan"></option>
+                        <option value="Bihar"></option>
+                        <option value="Tamil Nadu"></option>
+                        <option value="Haryana"></option>
+
+                        <!-- This data list will be edited through javascript     -->
+                    </datalist>
 
                 <input type="button" value="Speak" id="myButton4" onclick="myFunction1()" class="but3"></input>
                 <input type="button" value="Emojis" id="myButton5" onclick="myFunction1()" class="but3"></input>
