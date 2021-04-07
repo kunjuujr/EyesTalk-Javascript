@@ -1,21 +1,105 @@
 <html>
-<div>
-    <button onclick="myFunction()"> Test Me Out</button>
-</div>
+
+<body>
+    <!--
+    <div>
+
+        <button onclick="sendMessage()"> Test Me Out</button>
+
+
+
+        <form onsubmit="return sendMessage();">
+            <input id="message" placeholder="Enter message" autocomplete="off">
+            <input type="submit">
+        </form>
+
+    </div> -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <div class="chat">
+        <div class="chat-window" id="chat-window">
+            <ul id="messages">
+                <li class="msg">
+                    <span class="msg-span">
+                        <i class="name">Host: </i>Hello and welcome to the chat!
+                    </span>
+                </li>
+                <li class="msg my">
+                    <span class="msg-span">
+                        <i class="name">Me: </i>My message is on the right
+                    </span>
+                </li>
+            </ul>
+            <form id="messageForm" autocomplete="off">
+                <input type="text" id="msg-input" placeholder="Enter a message">
+                <button id="msg-btn" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+
+</body>
 
 </html>
 
 <script>
-    function myFunction() {
-        var msg = new SpeechSynthesisUtterance();
-        var voices = window.speechSynthesis.getVoices();
-        msg.voice = voices[4]
-        msg.text = "hey who are you ? two four"
-        msg.rate = 0.5;
-        window.speechSynthesis.speak(msg);
+    var firebaseConfig = {
+        apiKey: "AIzaSyACZIAA096A_q9S8cdCVSOuY7Bq55Z4hxQ",
+        authDomain: "eyes-talk.firebaseapp.com",
+        databaseURL: "https://eyes-talk-default-rtdb.firebaseio.com",
+        projectId: "eyes-talk",
+        storageBucket: "eyes-talk.appspot.com",
+        messagingSenderId: "128029044951",
+        appId: "1:128029044951:web:d39c6f8882147a8f28c092",
+        measurementId: "G-BTHQJCS7SQ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
 
-        speechSynthesis.getVoices().forEach(function (voice) {
-            console.log(voice.name, voice.default ? voice.default : '');
-        });
+    const msgScreen = document.getElementById("messages"); //the <ul> that displays all the <li> msgs
+    const msgForm = document.getElementById("messageForm"); //the input form
+    const msgInput = document.getElementById("msg-input"); //the input element to write messages
+    const msgBtn = document.getElementById("msg-btn");
+    const db = firebase.database();
+    const msgRef = db.ref("/msgs");
+
+    let name = "";
+    function init() {
+        name = prompt("Please enter your name");
     }
+    document.addEventListener('DOMContentLoaded', init);
+    msgForm.addEventListener('submit', sendMessage);
+
+
+    function sendMessage(e) {
+        e.preventDefault();
+        const text = msgInput.value;
+
+        if (!text.trim()) return alert('Please type a message'); //no msg submitted
+        const msg = {
+            name: name,
+            text: text
+        };
+
+        msgRef.push(msg);
+        msgInput.value = "";
+    }
+
+    msgRef.on('child_added', updateMsgs);
+    const updateMsgs = data => {
+        const { dataName, text } = data.val(); //get name and text
+
+        //load messages, display on left if not the user's name. Display on right if it is the user.
+        const msg = `<li class="${dataName == name ? "msg my" : "msg"}"><span class = "msg-span">
+    <i class = "name">${name}: </i>${text}
+    </span>
+  </li>`
+
+        msgScreen.innerHTML += msg; //add the <li> message to the chat window
+
+        //auto scroll to bottom
+        document.getElementById("chat-window").scrollTop = document.getElementById("chat-window").scrollHeight;
+    }
+
 </script>

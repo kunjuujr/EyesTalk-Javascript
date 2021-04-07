@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -8,11 +9,12 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
     <script src="main.js"></script>
     <script src="keyboard.js"></script>
     <script src="firebase.js"></script>
     <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script>
-    
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
 
 </head>
@@ -103,14 +105,14 @@
             <h1 style="color: white; font-size: 3vh;">Main Page</h1>
             <div class="">
                 <button class="but2" id="board" onclick="mainToKeyboard()">GazeBoard</button>
-                <button class="but2" id="message" onclick="mainToMessage()">Messages</button>
+                <button class="but2" id="messagingbut" onclick="mainToMessaging()">Messages</button>
 
                 <button class="but2" id="back" onclick="mainToCalib()">Back</button>
             </div>
         </div>
 
         <!-- Keyboard Main -->
-        <div class="keyboard" id="keyboard" style="display: block;">
+        <div class="keyboard" id="keyboard" style="display: none;">
             <input type="button" value="Back" id="boardtomain" onclick="keyboardToMain()" class="but6"></input>
 
             <img src="mainlogo.png" alt="" style="height: 20%; width: 20%; margin-left: 1.5%; margin-top: -10%;">
@@ -120,36 +122,36 @@
                 <input type="button" value="Alphabets" id="myButton1" onclick="myFunction1()" class="but3"></input>
                 <input type="button" value="Numbers/Symbols" id="myButton2" onclick="myFunction1()"
                     class="but3"></input>
-                <input type="button" value="Space" id="myButton3" onclick="myFunction3()" class="but3"></input>
-
-               
-               
-
-                <input type="text" list="datalist"  onkeyup="ac(this.value)"  id="display1 " class="display"/>
-                    <!-- On keyup calls the function everytime a key is released -->
-                    <datalist id="datalist">
-                        <option value="Delhi"></option>
-                        <option value="Ahemdabad"></option>
-                        <option value="Punjab"></option>
-                        <option value="Uttar Pradesh"></option>
-                        <option value="Himachal Pradesh"></option>
-                        <option value="Karnatka"></option>
-                        <option value="Kerela"></option>
-                        <option value="Maharashtra"></option>
-                        <option value="Gujrat"></option>
-                        <option value="Rajasthan"></option>
-                        <option value="Bihar"></option>
-                        <option value="Tamil Nadu"></option>
-                        <option value="Haryana"></option>
-
-                        <!-- This data list will be edited through javascript     -->
-                    </datalist>
+                <input type="button" value="Space" id="myButton3" onclick="space()" class="but3"></input>
+                <input class="display" id="display1" value="">
 
                 <input type="button" value="Speak" id="myButton4" onclick="myFunction1()" class="but3"></input>
                 <input type="button" value="Emojis" id="myButton5" onclick="myFunction1()" class="but3"></input>
                 <input type="button" value="Backspace" id="myButton6" onclick="backspace()" class="but3"></input>
 
             </div>
+        </div>
+
+
+        <!-- Messaging Live Chat-->
+        <div onclick="scrollWindow()" class="messaging" id="messaging" style="display:none">
+            <!-- create a form to send message -->
+            <input class="inputbox" id="message" placeholder="Enter message" autocomplete="off">
+            <div>
+                <button id="typemessage" class="butmess" onclick="messagingToKeyboard()">Type Message</button>
+                <button id="sendmessage" class="butmess" onclick="sendMessage();">Send Message</button>
+                <button id="clearmessage" class="butmess" onclick="clearMessage()">Clear</button>
+
+            </div>
+            <div id="messagebox" class="messagebox">
+                <!-- create a list -->
+                <ul id="messages"></ul>
+            </div>
+        </div>
+
+        <!--About Page-->
+        <div class="about" id="about">
+
         </div>
 
 </body>
