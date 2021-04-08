@@ -14,7 +14,6 @@
     <script src="keyboard.js"></script>
     <script src="firebase.js"></script>
     <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script>
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
 
 </head>
@@ -56,6 +55,7 @@
                         Up</a></p>
 
             </div>
+
         </div>
 
         <!-- Sign Up Page -->
@@ -82,7 +82,9 @@
 
         <!-- Calibration Window-->
         <div class="calibration" id="calibration" style="display: none;">
-            <img src="mainlogo.png" alt="" style="height: 20%; width: 20%;">
+
+            <img src="mainlogo.png" alt="" style="height: 20%; width: 20%   ">
+
             <h1 style="color: white; font-size: 3vh; font-weight: bolder;">Calibration</h1>
             <div class="cordinate-container">
                 <button class="but1" type="button" onclick="start()">Start</button>
@@ -104,6 +106,7 @@
             <img src="mainlogo.png" alt="" style="height: 20%; width: 20%;">
             <h1 style="color: white; font-size: 3vh;">Main Page</h1>
             <div class="">
+
                 <button class="but2" id="board" onclick="mainToKeyboard()">GazeBoard</button>
                 <button class="but2" id="messagingbut" onclick="mainToMessaging()">Messages</button>
 
@@ -113,7 +116,7 @@
 
         <!-- Keyboard Main -->
         <div class="keyboard" id="keyboard" style="display: none;">
-            <input type="button" value="Back" id="boardtomain" onclick="keyboardToMain()" class="but6"></input>
+            <input type="button" value="Main" id="boardtomain" onclick="keyboardToMain()" class="but6"></input>
 
             <img src="mainlogo.png" alt="" style="height: 20%; width: 20%; margin-left: 1.5%; margin-top: -10%;">
             <h1 style="color: white; font-size: 3vh;">GazeBoard</h1>
@@ -134,11 +137,11 @@
 
 
         <!-- Messaging Live Chat-->
-        <div onclick="scrollWindow()" class="messaging" id="messaging" style="display:none">
+        <div class="messaging" id="messaging" style="display:none">
             <!-- create a form to send message -->
             <input class="inputbox" id="message" placeholder="Enter message" autocomplete="off">
             <div>
-                <button id="typemessage" class="butmess" onclick="messagingToKeyboard()">Type Message</button>
+                <button id="typemessage" class="butmess" onclick="messagingToKeyboard()">GazeBoard</button>
                 <button id="sendmessage" class="butmess" onclick="sendMessage();">Send Message</button>
                 <button id="clearmessage" class="butmess" onclick="clearMessage()">Clear</button>
 
@@ -147,11 +150,6 @@
                 <!-- create a list -->
                 <ul id="messages"></ul>
             </div>
-        </div>
-
-        <!--About Page-->
-        <div class="about" id="about">
-
         </div>
 
 </body>

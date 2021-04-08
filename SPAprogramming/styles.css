@@ -279,6 +279,24 @@ p{
 
 }
 
+.about{
+
+    display: none;
+    color: black;
+    background-color: #1c182d;
+    border: solid 3px #f4e851;
+    width: 80%;
+    height: 90%;
+    padding: 1%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    
+}
+
 
 .display {
 	height: 40%;
@@ -395,3 +413,32 @@ p{
     padding: 1%;
     margin: 1%;  
 }
+
+
+.collapsible {
+    margin-left: 1%; margin-top: 1%;
+    transition-duration: 0.2s;
+    border-radius: 10px;
+    border: 2px solid lightgrey;
+    justify-content: center;
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: auto;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    margin: 1%;
+    }
+
+.content {
+    margin: 1%;
+    padding: 1%;
+    width: 25%;
+    transition: max-height 0.2s ease-out;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    }

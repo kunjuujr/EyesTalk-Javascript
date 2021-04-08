@@ -1,105 +1,69 @@
 <html>
 
 <body>
-    <!--
-    <div>
 
-        <button onclick="sendMessage()"> Test Me Out</button>
+    <p>A Collapsible:</p>
+    <button type="button" class="collapsible">About</button>
+    <div class="content">
+        <h3>EyesTalk - Visual Aided Speech and Messaging</h3>
 
 
-
-        <form onsubmit="return sendMessage();">
-            <input id="message" placeholder="Enter message" autocomplete="off">
-            <input type="submit">
-        </form>
-
-    </div> -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
-    <div class="chat">
-        <div class="chat-window" id="chat-window">
-            <ul id="messages">
-                <li class="msg">
-                    <span class="msg-span">
-                        <i class="name">Host: </i>Hello and welcome to the chat!
-                    </span>
-                </li>
-                <li class="msg my">
-                    <span class="msg-span">
-                        <i class="name">Me: </i>My message is on the right
-                    </span>
-                </li>
-            </ul>
-            <form id="messageForm" autocomplete="off">
-                <input type="text" id="msg-input" placeholder="Enter a message">
-                <button id="msg-btn" type="submit">Send</button>
-            </form>
+        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark"
+            data-type="HORIZONTAL" data-vanity="kevin-kunjumon-57925720b" data-version="v1"><a
+                class="badge-base__link LI-simple-link"
+                href="https://in.linkedin.com/in/kevin-kunjumon-57925720b?trk=profile-badge"></a>
+        </div>
+        <div></div>
+        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark"
+            data-type="HORIZONTAL" data-vanity="salyna-chhorm-103a951aa" data-version="v1"><a
+                class="badge-base__link LI-simple-link"
+                href="https://in.linkedin.com/in/salyna-chhorm-103a951aa?trk=profile-badge"></a>
         </div>
     </div>
-
-
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </body>
 
 </html>
 
 <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyACZIAA096A_q9S8cdCVSOuY7Bq55Z4hxQ",
-        authDomain: "eyes-talk.firebaseapp.com",
-        databaseURL: "https://eyes-talk-default-rtdb.firebaseio.com",
-        projectId: "eyes-talk",
-        storageBucket: "eyes-talk.appspot.com",
-        messagingSenderId: "128029044951",
-        appId: "1:128029044951:web:d39c6f8882147a8f28c092",
-        measurementId: "G-BTHQJCS7SQ"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
 
-    const msgScreen = document.getElementById("messages"); //the <ul> that displays all the <li> msgs
-    const msgForm = document.getElementById("messageForm"); //the input form
-    const msgInput = document.getElementById("msg-input"); //the input element to write messages
-    const msgBtn = document.getElementById("msg-btn");
-    const db = firebase.database();
-    const msgRef = db.ref("/msgs");
-
-    let name = "";
-    function init() {
-        name = prompt("Please enter your name");
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
     }
-    document.addEventListener('DOMContentLoaded', init);
-    msgForm.addEventListener('submit', sendMessage);
-
-
-    function sendMessage(e) {
-        e.preventDefault();
-        const text = msgInput.value;
-
-        if (!text.trim()) return alert('Please type a message'); //no msg submitted
-        const msg = {
-            name: name,
-            text: text
-        };
-
-        msgRef.push(msg);
-        msgInput.value = "";
-    }
-
-    msgRef.on('child_added', updateMsgs);
-    const updateMsgs = data => {
-        const { dataName, text } = data.val(); //get name and text
-
-        //load messages, display on left if not the user's name. Display on right if it is the user.
-        const msg = `<li class="${dataName == name ? "msg my" : "msg"}"><span class = "msg-span">
-    <i class = "name">${name}: </i>${text}
-    </span>
-  </li>`
-
-        msgScreen.innerHTML += msg; //add the <li> message to the chat window
-
-        //auto scroll to bottom
-        document.getElementById("chat-window").scrollTop = document.getElementById("chat-window").scrollHeight;
-    }
-
 </script>
+
+<style>
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: auto;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        margin: 1%;
+    }
+
+    .content {
+        margin: 1%;
+        padding: 1%;
+        width: 25%;
+        transition: max-height 0.2s ease-out;
+
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+</style>

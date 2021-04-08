@@ -11,6 +11,13 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth()
 
+var emailstr = ""
+var myName = ""
+var email = ""
+var password = ""
+var user = ""
+var mailstr = ""
+var message = ""
 
 //signup
 function signup() {
@@ -32,12 +39,14 @@ function signup() {
 
 }
 
+
+
 //sigin
 function signin() {
 
-    var email = document.getElementById("email")
-    var password = document.getElementById("password")
-    var user = firebase.auth().currentUser;
+    email = document.getElementById("email")
+    password = document.getElementById("password")
+    user = firebase.auth().currentUser;
 
     const promise = auth.signInWithEmailAndPassword(email.value, password.value)
     promise.catch(e => alert(e.message))
@@ -45,13 +54,13 @@ function signin() {
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
             loginToCalib()
-            var emailstr = email.value
+            emailstr = email.value
             mailstr = "@gmail.com"
-            emailstr = emailstr.replace(mailstr, "")
+            emailstr = emailstr.replace(mailstr, "");
+            myName = emailstr
             document.getElementById("emailtxt").innerHTML = emailstr
             document.getElementById("emailend").innerHTML = mailstr
             document.getElementById('profile').style.display = 'block'
-
 
         }
         else {
@@ -64,19 +73,15 @@ function signin() {
 //logout 
 function logout() {
     firebase.auth().signOut()
-    location.reload()
+    window.location.reload()
     document.getElementById('profile').style.display = 'none';
 
 }
 
-
 //Messaging is here
-//var myName = document.getElementById("emailtxt").value
-myName = prompt("Enter Your Name")
-
 function sendMessage() {
     // get message
-    var message = document.getElementById("message").value;
+    message = document.getElementById("message").value;
 
     // save in database
     firebase.database().ref("messages").push().set({
@@ -85,6 +90,8 @@ function sendMessage() {
     });
 
     document.getElementById("message").value = ""
+    return false;
+
 
 }
 
@@ -100,11 +107,11 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
     // give each message a unique ID
     html += "<p class='messclass' id='message-" + snapshot.key + "'>";
     // show delete button if message is sent by me
-    if (snapshot.val().sender == myName) {
-        html = html.replace("messclass", "selfclass")
-        // html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);' class='butdel'>";
-        //  html += "Delete";
-        // html += "</button>";
+    if (snapshot.val().sender === myName) {
+        html = html.replace("class='messclass'", "class='selfclass'")
+        //html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);' class='butdel'>";
+        //html += "Delete";
+        //html += "</button>";
     }
     html += snapshot.val().sender + ": " + snapshot.val().message;
     html += "</p>";
